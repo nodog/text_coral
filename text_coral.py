@@ -1,20 +1,21 @@
+import os
 import time
-import random
+import coral_mode
 
-COL_WIDTH = 80
-FRAMES_PER_SECOND = 4.0
+size = os.get_terminal_size();
 
-def build_coral_row(row_chars):
-    random_index = random.randint(0, COL_WIDTH - 1)
-    #print(random_index)
-    row_chars[random_index] = '*'
-    return ''.join(row_chars)
+frame_count = 0
 
+global_variables = {
+    "col_width": size.columns,
+    "frames_per_second": 6.0,
+}
 
-row_chars = ['.'] * COL_WIDTH
+mode = coral_mode.CoralMode(global_variables)
 
 while True:
-    coral_row = build_coral_row(row_chars)
+    coral_row = mode.get_next_row(frame_count)
     print(coral_row)
-    time.sleep(1.0/FRAMES_PER_SECOND)
+    frame_count += 1
+    time.sleep(1.0/global_variables["frames_per_second"])
 
