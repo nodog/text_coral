@@ -8,7 +8,7 @@ frame_count = 0
 
 global_variables = {
     "col_width": size.columns,
-    "frames_per_second": 6.0,
+    "frames_per_second": 20.0,
 }
 
 mode = coral_mode.CoralMode(global_variables)
